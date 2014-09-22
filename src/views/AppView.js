@@ -18,7 +18,7 @@ define(function(require, exports, module) {
         this.options.slidePosition = 0.77 * this.options.cameraWidth;
 
         _createCamera.call(this);
-        _createSlideshow.call(this);
+
     }
 
     AppView.prototype = Object.create(View.prototype);
@@ -45,6 +45,9 @@ define(function(require, exports, module) {
         });
 
         this.add(cameraModifier).add(camera);
+        camera.on('deploy', function(){
+            _createSlideshow.call(this);
+        }.bind(this));
     }
 
     function _createSlideshow() {

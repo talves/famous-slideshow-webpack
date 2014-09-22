@@ -24,8 +24,8 @@ define(function(require, exports, module) {
 
     function initApp(data) {
         data = SlideData.parse(data);
-
-        var appView = new AppView({ data : data, cameraWidth: 0.5 * contextSize[1] });
+        var appWidth = (contextSize[0] > contextSize[1]) ? contextSize[1] : contextSize[0];
+        var appView = new AppView({ data : data, cameraWidth: 0.5 * appWidth });
 
         mainContext.add(appView);
     }
